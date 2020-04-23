@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xuecheng.manage_course.dao.TeachplanMapper">
+    <!--resultType就是映射成这种类型的，这种映射的比较简单，
+            resultMape可以自定义返回类型，teachplanMap-->
+    <resultMap id="teachplanMap" type="com.xuecheng.framework.domain.course.ext.TeachplanNode">
+        <!--property映射到模型类中的id实体，这是写的继承后的类，这样更好扩展-->
+        <id column="one_id" property="id"></id>
+        <result column="one_pname" property="pname"></result>
+        <!--这是模型类中的children实体，因为这是一对多的，就是一个父的标签下面对应了多个子标签，
+        比如一门课下面有多个小课，而children则是一个list,里面存了很多节点-->
+        <collection property="children" ofType="com.xuecheng.framework.domain.course.ext.TeachplanNode">
+            <id column="two_id" property="id"></id>
+            <result column="two_pname" property="pname"></result>
+            <collection property="children" ofType="com.xuecheng.framework.domain.course.ext.TeachplanNode">
+                <id column="three_id" property="id"></id>
+                <result column="three_pname" property="pname"></result>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="selectList" parameterType="java.lang.String"
+            resultMap="teachplanMap">
+        SELECT
+        a.id one_id,
+        a.pname one_pname,
+        b.id two_id,
+        b.pname two_pname,
+        c.id three_id,
+        c.pname three_pname
+        FROM
+        teachplan a
+        LEFT JOIN teachplan b
+        ON b.parentid = a.id
+        LEFT JOIN teachplan c
+        ON c.parentid = b.id
+        WHERE a.parentid = '0'
+        <if test="_parameter !=null and _parameter!=''">
+            AND a.courseid = #{courseId}
+        </if>
+        ORDER BY a.orderby,
+        b.orderby,
+        c.orderby
+    </select>
+</mapper>
+
+
