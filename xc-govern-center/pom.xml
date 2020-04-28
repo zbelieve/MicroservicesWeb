@@ -12,5 +12,12 @@
 
     <artifactId>xc-govern-center</artifactId>
 
+    <dependencies>
+        <!-- 导入Eureka服务的依赖 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

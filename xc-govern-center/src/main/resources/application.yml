@@ -1,0 +1,17 @@
+server:
+  port: ${PORT:50101} #服务端口，${PORT:50101}这个PORT指的是环境变量,而后面的值可以随便写一个，
+spring:                  #后面在idea中会配置一个脚本去重新传参
+  application:
+    name: xc-govern-center #指定服务名
+eureka:
+  client:
+    registerWithEureka: true #服务注册，是否将自己注册到Eureka服务中
+    fetchRegistry: true #服务发现，是否从Eureka中获取注册信息
+    serviceUrl: #Eureka客户端与Eureka服务端的交互地址，高可用状态配置对方的地址，单机状态配置自己（如果不配置则默认本机8761端口）
+      defaultZone: ${EUREKA_SERVER:http://eureka02:50101/eureka/} # 往另一个EUREKA_SERVER注册，上报地址一定要用域名或者主机名
+                                                                  # 因为这个eureka02是在主机host中配置过的，所以可以这样写
+  server:
+    enable-self-preservation: false #是否开启自我保护模式
+    eviction-interval-timer-in-ms: 60000 #服务注册表清理间隔（单位毫秒，默认是60*1000）
+  instance:
+    hostname: ${EUREKA_DOMAIN:eureka02} #配置主机名
