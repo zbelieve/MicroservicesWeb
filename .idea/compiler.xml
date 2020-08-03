@@ -19,6 +19,7 @@
         <module name="test-fastdfs" />
         <module name="test-freemarker" />
         <module name="xc-service-manage-cms" />
+        <module name="yj-es-api" />
         <module name="xc-service-manage-cms-client" />
         <module name="xc-framework-model" />
       </profile>
@@ -39,6 +40,7 @@
       <module name="xc-service-manage-cms-client" target="1.8" />
       <module name="xc-service-manage-course" target="1.8" />
       <module name="xcservicemanagecmsclient" target="1.8" />
+      <module name="yj-es-api" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -57,6 +59,7 @@
       <module name="xc-service-manage-cms-client" options="-parameters" />
       <module name="xc-service-manage-course" options="-parameters" />
       <module name="xcservicemanagecmsclient" options="-parameters" />
+      <module name="yj-es-api" options="-parameters" />
     </option>
   </component>
 </project>

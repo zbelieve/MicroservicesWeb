@@ -14,6 +14,7 @@
         <option value="$PROJECT_DIR$/xc-service-manage-cms/pom.xml" />
         <option value="$PROJECT_DIR$/xc-service-manage-course/pom.xml" />
         <option value="$PROJECT_DIR$/xc-service-base-filesystem/pom.xml" />
+        <option value="$PROJECT_DIR$/yj-es-api/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

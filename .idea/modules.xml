@@ -17,6 +17,7 @@
       <module fileurl="file://$PROJECT_DIR$/xc-service-manage-cms-client/xc-service-manage-cms-client.iml" filepath="$PROJECT_DIR$/xc-service-manage-cms-client/xc-service-manage-cms-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/xc-service-manage-course/xc-service-manage-course.iml" filepath="$PROJECT_DIR$/xc-service-manage-course/xc-service-manage-course.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/xcEduService01.iml" filepath="$PROJECT_DIR$/.idea/xcEduService01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yj-es-api/yj-es-api.iml" filepath="$PROJECT_DIR$/yj-es-api/yj-es-api.iml" />
     </modules>
   </component>
 </project>
