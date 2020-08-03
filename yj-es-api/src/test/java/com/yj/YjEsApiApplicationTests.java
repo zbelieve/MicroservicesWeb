@@ -154,6 +154,7 @@ class YjEsApiApplicationTests {
 
     }
     //10.查询数据
+    //QueryBuilders可以操作所有的在控制台操作ES的操作
     @Test
     void testSearch() throws IOException {
         SearchRequest searchRequest = new SearchRequest("zhongyi_index");
