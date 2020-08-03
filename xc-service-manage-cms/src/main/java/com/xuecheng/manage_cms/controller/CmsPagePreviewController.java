@@ -26,6 +26,10 @@ public class CmsPagePreviewController extends BaseController {
         String pageHtml = pageService.getPageHtml(Id);
         //通过response对象输出内容,建立一个输出流
         ServletOutputStream outputStream = response.getOutputStream();
+        //原来做轮播图并没用用到ssi,所以没有加ssi，而现在做课程预览界面是有ssi的，所以加了这个
+        //由于Nginx先请求cms的课程预览功能得到html页面，再解析页面中的ssi标签，这里必须保证cms页面预览返回的
+        //页面的Content-Type为text/html;charset=utf-8
+        response.setHeader("Content-type","text/html;charset=utf-8");
         outputStream.write(pageHtml.getBytes("utf-8"));
     }
 

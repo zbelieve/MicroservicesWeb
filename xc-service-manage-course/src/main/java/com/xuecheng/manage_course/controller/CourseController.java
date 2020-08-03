@@ -55,7 +55,7 @@ public class CourseController implements CourseControllerApi {
         return courseService.deleteCoursePic(courseId);
     }
 
-    //呈现课程
+    //呈现课程，就是返回课程信息的数据模型,这个数据模型在mysql中的coursebase中
     @Override
     @GetMapping("/courseview/{id}")
     public CourseView courseView(@PathVariable("id") String id) {

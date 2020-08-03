@@ -18,6 +18,19 @@ public class FreemarkerController {
     @Autowired
     RestTemplate restTemplate;
 
+    /**测试课程预览的静态化页面+模型数据好不好使
+    * */
+    @RequestMapping("/course")
+    public String course(Map<String, Object> map){
+        //使用restTemplate请求模型数据， //url请求返回的是json数据，之后在这儿转换map，关于后面的课程信息都是存在mysql中的coursebase
+        ResponseEntity<Map> forEntity = restTemplate.getForEntity("http://localhost:31200/course/courseview/4028e581617f945f01617f9dabc40000", Map.class);
+        //键值对存在body里面
+        Map body = forEntity.getBody();
+        //设置模型数据，put的是所有的，到时候模板中取数据的时候以键的名字来获取就可以了
+        map.putAll(body);
+        return "course1";
+    }
+
     /**
      * 这个是远程请求服务器上地址，由这个地址返回的数据库中的cmsConfig数据，将其加载到模板文件index_banner中，
      * 循环取出所需要的图片地址值，注意要在数据库中将这个值改成ngix服务器下的图片地址
