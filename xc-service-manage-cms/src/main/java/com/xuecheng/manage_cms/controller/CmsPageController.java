@@ -80,4 +80,9 @@ public class CmsPageController implements CmsPageControllerApi {
         return pageService.post(pageId);
     }
 
+    @GetMapping("cms/zipkin")
+    public String testZipkin()
+    {
+        return "我是31001端口返回";
+    }
 }

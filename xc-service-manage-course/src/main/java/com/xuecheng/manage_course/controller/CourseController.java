@@ -10,12 +10,16 @@ import com.xuecheng.framework.model.response.ResponseResult;
 import com.xuecheng.manage_course.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/course")
 public class CourseController implements CourseControllerApi {
     @Autowired
     CourseService courseService;
+
+    @Autowired
+    RestTemplate restTemplate;
 
     /**查询和展示具体课程的课程计划
      * */
@@ -60,5 +64,16 @@ public class CourseController implements CourseControllerApi {
     @GetMapping("/courseview/{id}")
     public CourseView courseView(@PathVariable("id") String id) {
         return courseService.getCourseView(id);
+    }
+
+
+
+    // ====================> zipkin+sleuth
+    @GetMapping("/test/zipkin")
+    public String testZipkin()
+    {
+        String serviceId = "XC-SERVICE-MANAGE-CMS";
+        String result = restTemplate.getForObject("http://"+serviceId+"/cms/page/cms/zipkin/", String.class);
+        return "xx";
     }
 }

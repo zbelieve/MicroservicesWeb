@@ -3,6 +3,15 @@ server:
 spring:
   application:
     name: xc-service-manage-cms
+  zipkin:
+    base-url: http://localhost:9411
+    sender:
+      type: web # 另外2个是 rabbit和kafka
+    sleuth:
+      sampler:
+      #采样率值介于 0 到 1 之间，1 则表示全部采集
+        probability: 1
+
   data:
     mongodb:
       uri: mongodb://root:123@localhost:27017

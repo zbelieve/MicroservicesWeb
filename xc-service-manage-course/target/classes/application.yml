@@ -3,6 +3,15 @@ server:
 spring:
   application:
     name: xc-service-manage-course
+  zipkin:
+    base-url: http://localhost:9411
+    sleuth:
+      sampler:
+      #采样率值介于 0 到 1 之间，1 则表示全部采集
+        probability: 1
+#    sender:
+#      type: web # 另外2个是 rabbit和kafka
+
   datasource:
     druid:
       url: jdbc:mysql://localhost:3306/xc_course?characterEncoding=utf-8
